@@ -1,12 +1,13 @@
 /*
 	Zadatak 2. 
-	• Napiši program koji izvršava sljede?u jednadbu
-	?? = ( A ? B + C ? A ? (C ? A))*(B*A+C-B)
-	Rezutat sprema na sljede?u adresu u memoriji
+	â€¢ NapiÅ¡i program koji izvrÅ¡ava sljedeÄ‡u jednadÅ¾bu
+	Y = ( A * B + C * A - (C * A)) * (B * A + C - B)
+
+	Rezutat sprema na sljedeÄ‡u adresu u memoriji
 	adresa 64
-	Za provjeru koristite sljede?e vrijednosti
-	• A =3, B=5, C=-7.
-	Varijable, me?urezultati i rezultati stanu u 8-bitni registar
+	Za provjeru koristite sljedeÄ‡e vrijednosti
+	â€¢ A =3, B=5, C=-7.
+	Varijable, meÄ‘urezultati i rezultati stanu u 8-bitni registar
  */ 
 
 .equ varA = 3
