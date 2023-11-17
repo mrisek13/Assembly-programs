@@ -1,13 +1,13 @@
 /*
 	Zadatak 1. 
-	ï Napiöi program koji izvröava sljede?e jednadûbe
-	??1 = varA + varB
-	??2 = varA + varC
-	??3 = varB + varC
-	Rezutate sprema na sljede?e adrese u memoriji
+	‚Ä¢ Napi≈°i program koji izvr≈°ava sljedece jednad≈æbe
+	Y1 = varA + varB
+	Y2 = varA + varC
+	Y3 = varB + varC
+	Rezutate sprema na sljedece adrese u memoriji
 	Y1=64, Y2=65, Y3=66
-	Za provjeru koristite sljede?e vrijednosti
-	ï varA =125, varB=35, varC=-33
+	Za provjeru koristite sljedece vrijednosti
+	‚Ä¢ varA =125, varB=35, varC=-33
  */ 
 
 .equ varA = 125
@@ -22,9 +22,9 @@ ldi r17,varB
 ldi r18,varC
 
 add r16,r17	; varA + varB
-sts Y1, r16	; upiöi rezultat u Y1 = 64
+sts Y1, r16	; upi≈°i rezultat u Y1 = 64
 ldi r16,varA
 add r16,r18	; varA + varC
-sts Y2, r16	; upiöi rezultat u Y2 = 65
+sts Y2, r16	; upi≈°i rezultat u Y2 = 65
 add r17,r18	; varB + varC
-sts Y3, r17	; upiöi rezultat u Y3 = 66
+sts Y3, r17	; upi≈°i rezultat u Y3 = 66
