@@ -1,6 +1,6 @@
 /*
 Napiši program koji izvršava sljedecu jednadžbu Y = (A * B + B) * C
-Rezutat sprema u memoriji po?evši s adresom 0x102.
+Rezutat sprema u memoriji pocevši s adresom 0x102.
 Varijable A i B imaju 8 bitnu vrijednost dok varijabla C može imati 16 bitnu vrijednost. 
 Za potrebe simulacije odaberi vlastite vrijednosti A, B i C varijabli.
 Navedi te vrijednosti te rezultat u komentaru u ASM datoteci.
