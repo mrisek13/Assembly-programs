@@ -1,7 +1,7 @@
 /*
-Napiöi program koji izvröava sljede?u jednadûbu ?? = (A ? B + B) ? C
-Rezutat sprema u memoriji po?evöi s adresom 0x102.
-Varijable A i B imaju 8 bitnu vrijednost dok varijabla C moûe imati 16 bitnu vrijednost. 
+Napi≈°i program koji izvr≈°ava sljedecu jednad≈æbu Y = (A * B + B) * C
+Rezutat sprema u memoriji po?ev≈°i s adresom 0x102.
+Varijable A i B imaju 8 bitnu vrijednost dok varijabla C mo≈æe imati 16 bitnu vrijednost. 
 Za potrebe simulacije odaberi vlastite vrijednosti A, B i C varijabli.
 Navedi te vrijednosti te rezultat u komentaru u ASM datoteci.
  */ 
@@ -10,11 +10,11 @@ ldi R16, 0x02	; Postavi vrijednost 2 u varijablu A
 ldi R17, 0x03	; Postavi vrijednost 3 u varijablu B
 ldi R18, 0x05	; Postavi vrijednost 5 u varijablu C
 
-mul R16, R17	; Pomnoûi A * B
-add R0, R17		; Pribroji B rjeöenju A * B
-mul R0, R18		; Pomnoûi (A * B + B) sa varijablom C
-sts 0x102, R0	; Rjeöenje Y = (A * B + B) * C
-sts 0x103, R1	; Rjeöenje Y = (6 + 3) * 5
+mul R16, R17	; Pomno≈æi A * B
+add R0, R17		; Pribroji B rje≈°enju A * B
+mul R0, R18		; Pomno≈æi (A * B + B) sa varijablom C
+sts 0x102, R0	; Rje≈°enje Y = (A * B + B) * C
+sts 0x103, R1	; Rje≈°enje Y = (6 + 3) * 5
 
 ; Y = 45
 
@@ -47,7 +47,7 @@ add r20,r18
 clr r0
 mul r19,r20
 
-rjmp†start
+rjmp¬†start
 
 
 
@@ -135,13 +135,13 @@ MultWoAdd:
 	clr R6
 	clr R5
 	clr R4
-MultLoop:	; petlja za mnoûenje
+MultLoop:	; petlja za mno≈æenje
 	lsr R3 ; shift least significant bit to carry
 	brcc MultWoAdd ; if clear skip adding
 	add R4,R0 ; Add number to result, lowest byte
 	adc R5,R1 ; Add number with carry to result, second byte
 	adc R6,R2 ; Add number with carry to result, third byte
-MultWoAdd:	; petlja za mnoûenje bez zbrajanja
+MultWoAdd:	; petlja za mno≈æenje bez zbrajanja
 	lsl R0 ; Shift number left, bit 0 = 0, bit 7 to carry
 	rol R1 ; Roll left, bit 0 = carry, bit 7 to carry
 	rol R2 ; Roll left, bit 0 = carry, bit 7 to carry
@@ -158,31 +158,31 @@ MultWoAdd:	; petlja za mnoûenje bez zbrajanja
 	
 	
 	
-; Evo objaönjenja naredbi za programiranje mikrokontrolera Atmel u assembly jeziku:
+; Evo obja≈°njenja naredbi za programiranje mikrokontrolera Atmel u assembly jeziku:
 
 1. ldi (Load Immediate):
    - `ldi Rd, K`: Ucitava neposrednu vrijednost (K) u registar (Rd). Koristi se za postavljanje vrijednosti u registar.
 
 2. mov (Move):
-   - `mov Rd, Rr`: Kopira sadrûaj jednog registra (Rr) u drugi registar (Rd).
+   - `mov Rd, Rr`: Kopira sadr≈æaj jednog registra (Rr) u drugi registar (Rd).
 
 3. clr (Clear):
-   - `clr Rd`: Postavlja sadrûaj registra (Rd) na 0, tj. briöe ga.
+   - `clr Rd`: Postavlja sadr≈æaj registra (Rd) na 0, tj. bri≈°e ga.
 
 4. lsr (Logical Shift Right):
-   - `lsr Rd`: Vröi logicki desni pomak registra (Rd) za jedno mjesto. Najniûi bit se postavlja na 0, a najviöi se briöe.
+   - `lsr Rd`: Vr≈°i logicki desni pomak registra (Rd) za jedno mjesto. Najni≈æi bit se postavlja na 0, a najvi≈°i se bri≈°e.
 
 5. brcc (Branch if Carry Clear):
    - `brcc oznaka`: Ako se CF (Carry Flag) postavi na 0, skoci na navedenu oznaku.
 
 6. add (Addition):
-   - `add Rd, Rr`: Zbraja vrijednosti dva registra (Rd i Rr) i sprema rezultat u odrediöni registar (Rd).
+   - `add Rd, Rr`: Zbraja vrijednosti dva registra (Rd i Rr) i sprema rezultat u odredi≈°ni registar (Rd).
 
 7. adc (Addition with Carry):
-   - `adc Rd, Rr`: Zbraja vrijednosti dva registra (Rd i Rr) uzimajuci u obzir Carry flag i sprema rezultat u odrediöni registar (Rd).
+   - `adc Rd, Rr`: Zbraja vrijednosti dva registra (Rd i Rr) uzimajuci u obzir Carry flag i sprema rezultat u odredi≈°ni registar (Rd).
 
 8. lsl (Logical Shift Left):
-   - `lsl Rd`: Vröi logicki lijevi pomak registra (Rd) za jedno mjesto. Najviöi bit postaje Carry flag, a najniûi se postavlja na 0.
+   - `lsl Rd`: Vr≈°i logicki lijevi pomak registra (Rd) za jedno mjesto. Najvi≈°i bit postaje Carry flag, a najni≈æi se postavlja na 0.
 
 9. rol (Rotate Left through Carry):
    - `rol Rd`: Rotira vrijednost registra (Rd) ulijevo kroz Carry flag.
