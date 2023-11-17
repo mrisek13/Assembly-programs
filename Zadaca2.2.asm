@@ -1,8 +1,8 @@
 /*
 Zbroji brojeve 3A72104B(16) i  002CFE31(16)
 
-� Prvi broj spremi u memoriju u na mjesto registara. Po?ni s registrom R16.
-� Drugi broj spremi tako?er u memoriju na mjesto registra. Po?ni s registrom R20. 
+• Prvi broj spremi u memoriju u na mjesto registara. Počni s registrom R16.
+• Drugi broj spremi također u memoriju na mjesto registra. Počni s registrom R20. 
 
 Rezultate spremi na adrese od 38H, 39H, 3AH,3BH
 */
