@@ -1,0 +1,122 @@
+Atmel AVR 8-bitni mikrokontroleri
+
+******************************************************************
+SREG 
+Statusni registri
+******************************************************************
+
+Služe za praćenje različitih statusa i događaja u mikrokontroleru
+
+Zero Flag (Z): Ovaj bit označava da li je rezultat posljednje aritmetičke operacije jednak nuli.
+
+Carry Flag (C): Označava da li je došlo do prijenosa prilikom zadnje aritmetičke operacije.
+
+Overflow Flag (V): Indicira prelazak preko dozvoljenog opsega pri aritmetičkim operacijama.
+
+Sign Flag (S): Pokazuje znak rezultata posljednje aritmetičke operacije (pozitivan ili negativan).
+
+Half Carry Flag (H): Koristi se u BCD (Binary-Coded Decimal) aritmetici kako bi označio prijenos između nižih i viših znamenki.
+
+Global Interrupt Flag (I): Ovaj bit omogućava ili onemogućava sve prekide u mikrokontroleru. Kada je postavljen na 1, prekidi su onemogućeni.
+
+Negative Flag (N): Ovaj bit označava da li je rezultat posljednje aritmetičke operacije bio negativan. Ako je N postavljen na 1, to znači da je rezultat bio negativan.
+
+Transfer Bit (T): T bit se koristi u instrukcijama za rotaciju i prijenos bitova. Omogućava povećanje fleksibilnosti u upravljanju bitovima u registrima i memoriji.
+
+SREG: Status Register
+C: Carry Flag
+Z: Zero Flag
+N: Negative Flag
+V: Two’s complement overflow indicator
+S: N (+) V, For signed tests
+H: Half Carry Flag
+T: Transfer bit used by BLD and BST inst
+I: Global Interrupt Enable/Disable Flag
+
+********************************************************************
+REGISTERS AND OPERANDS
+********************************************************************
+
+Registar:
+Registar je mala i brza memorija unutar mikroprocesora ili mikrokontrolera koja se koristi za pohranjivanje i manipulaciju podacima. Registri su izuzetno brzi, jer su smješteni unutar samog čipa mikroprocesora, što im omogućuje trenutačan pristup podacima. Oni se koriste za privremeno pohranjivanje podataka tijekom izvođenja instrukcija. Svaki mikroprocesor ima svoj skup registara, uključujući opće namjene (kao što su registri za pohranu podataka) i specifične registre (kao što su statusni registri, registri za adresiranje, itd.).
+
+Operand:
+Operand je vrijednost ili podatak koji se koristi u izvršenju instrukcije. Instrukcije procesora obično uključuju jedan ili više operanada. Na primjer, u aritmetičkim operacijama, operandi su brojevi koji se sudjeluju u operaciji. Operandi mogu biti vrijednosti pohranjene u registrima, konstante, adrese u memoriji ili druge vrste podataka. Ovisno o tipu instrukcije, operandi mogu biti izvor podataka, odredište za rezultat, adresa u memoriji itd.
+
+Ukratko, registar je malena i brza memorija unutar procesora koja se koristi za pohranu podataka, dok je operand podatak ili vrijednost koji se koristi u izvršenju instrukcije. Operandi se često pohranjuju ili dohvaćaju iz registara tijekom izvođenja instrukcija.
+
+
+Rd: Destination (and source) register in the Register File
+Rr: Source register in the Register File
+R: Result after instruction is executed
+K: Constant data
+k: Constant address
+b: Bit in the Register File or I/O Register (3-bit)
+s: Bit in the Status Register (3-bit)
+X,Y,Z: Indirect Address Register
+(X=R27:R26, Y=R29:R28 and Z=R31:R30)
+A: I/O location address
+q: Displacement for direct addressing (6-bit)
+
+
+U kontekstu mikrokontrolera i arhitekture s registarskim skupom, registri i operandi igraju ključnu ulogu u izvođenju instrukcija. Evo objašnjenja za navedene registre i operande:
+
+Rd (Destination register): Ovaj registar predstavlja odredišni registar u Register File (skup registara). To je registar u koji će se pohraniti rezultat izvođenja instrukcije.
+
+Rr (Source register): Rr je izvorni registar u Register File. Podaci iz ovog registra se često koriste kao jedan od operandi u izvršavanju instrukcije.
+
+R (Result register): Ovaj registar predstavlja rezultat izvođenja instrukcije. Nakon što se instrukcija izvrši, rezultat se može pohraniti u ovaj registar.
+
+K (Constant data): K je konstantna vrijednost koja se koristi kao operand u instrukciji. Ova konstanta može biti određeni podatak ili broj koji se koristi u izvođenju instrukcije.
+
+k (Constant address): Ovo je konstantna adresa, tj. nepromjenjiva adresa u memoriji koja se koristi kao operand.
+
+b (Bit in the Register File or I/O Register): Ovaj operand predstavlja određeni bit u Register File (registarski skup) ili I/O registru. Označava se s 3 bita.
+
+s (Bit in the Status Register): Operand s označava određeni bit u Status Registeru, koji često sadrži informacije o statusu, npr. informacije o prekidima ili rezultatima prethodnih aritmetičkih operacija.
+
+X, Y, Z (Indirect Address Register): Ovi registri koriste se za indirektno adresiranje memorije. X, Y i Z su registri koji sadrže parove registara koji zajedno tvore adresu u prostoru podataka.
+
+A (I/O location address): A predstavlja adresu ulazno/izlazne (I/O) lokacije, gdje se mogu vršiti operacije ulazno/izlaznih instrukcija.
+
+q (Displacement for direct addressing): Ovaj operand predstavlja pomak ili odstupanje koje se koristi za određivanje adrese prilikom izravnog adresiranja. To je 6-bitni broj koji se dodaje ili oduzima od baze kako bi se dobila konačna adresa.
+
+
+************************************************
+I/O REGISTERS
+************************************************
+
+I/O registri (Input/Output registri) su specifični registri u AVR mikrokontrolerima koji se koriste za kontrolu i komunikaciju s perifernim uređajima i vanjskim komponentama. Neki od tih registara odnose se na upravljanje adresnim prostorom i registrima koji omogućuju pristup vanjskoj memoriji. Evo objašnjenja za navedene registre:
+
+RAMPX, RAMPY, RAMPZ:
+
+RAMPX: 
+Koristi se za kontrolu visokih bajtova adrese registra X. X registar često služi kao pokazivač na memoriju u mnogim operacijama. RAMPX zajedno s X određuje cjelokupnu adresu u prostoru podataka.
+RAMPY: Analogno RAMPX, ali za registar Y.
+RAMPZ: Analogno RAMPX i RAMPY, ali za registar Z. Ovi registri su posebno važni u mikrokontrolerima s više od 64 KB prostora za podatke, gdje je potrebno koristiti RAMPZ za manipulaciju visokim bajtovima adresa.
+
+RAMPD:
+Ovaj registar kontrolira visoke bajtove adresa Direct adresiranja. Koristi se u kombinaciji s određenim instrukcijama kako bi se omogućilo adresiranje izvan standardnog opsega od 64 KB memorije.
+
+EIND (Extended Indirect Register):
+EIND je registar koji se koristi za produženo indirektno adresiranje. Koristi se u kombinaciji s instrukcijama za rad s podacima koji nisu unutar standardnog adresnog prostora, kao što su podržani visokim bajtovima adresa RAMPX, RAMPY, RAMPZ i RAMPD.
+
+Stack Pointer (SP):
+Opis: Stack Pointer (SP) je registar koji se koristi za praćenje adrese na kojoj se trenutno nalazi vrh steka (stack) u memoriji. Stog je posebna vrsta memorije koja se koristi za pohranu povratnih adresa, lokalnih varijabli i privremenih podataka tijekom izvođenja podprograma (funkcija ili potprograma).
+Kako se koristi s I/O registrima: U nekim mikrokontrolerima, poput AVR-a, SP može biti dostupan kao I/O registar (npr. SPH i SPL za visoke i niske bajtove). Programeri ga mogu koristiti za upravljanje stekom prilikom pozivanja i vraćanja iz potprograma.
+
+Status Register (SREG):
+Opis: Status Register (SREG) je registar koji sadrži statusne zastavice koje označavaju različite uvjete nakon izvođenja instrukcija. Na primjer, Z (Zero), C (Carry), N (Negative), V (Overflow), S (Sign), H (Half Carry), T (Transfer bit), I (Global Interrupt Enable) su neki od bitova u Status Registeru.
+Kako se koristi s I/O registrima: SREG se može koristiti za kontrolu globalnih prekida (I bit) te praćenje raznih statusnih uvjeta nakon aritmetičkih i logičkih operacija. Ovisno o postavkama bitova u ovom registru, mikrokontroler može omogućiti ili onemogućiti prekide te obraditi instrukcije ovisno o rezultatima prethodnih operacija.
+
+Flags:
+Ova notacija "<->", "0", "1" i "-" koristi se za opisivanje kako određena instrukcija utječe na određene zastavice u Status Registeru:
+
+<-> (Flag affected by instruction): Ova oznaka znači da je određena zastava ili statusni bit pogođen izvođenjem instrukcije. To znači da će se vrijednost tog bita promijeniti, bilo postavljanjem (1) ili brisanjem (0), ovisno o rezultatu instrukcije.
+
+0 (Flag cleared by instruction): Ova oznaka označava da će izvođenje instrukcije postaviti određeni statusni bit na nulu, neovisno o prethodnoj vrijednosti tog bita.
+
+1 (Flag set by instruction): Ova oznaka označava da će izvođenje instrukcije postaviti određeni statusni bit na jedinicu, neovisno o prethodnoj vrijednosti tog bita.
+
+- (Flag not affected by instruction): Ova oznaka znači da izvođenje instrukcije ne utječe na određeni statusni bit, tj. vrijednost tog bita ostaje nepromijenjena.
+
